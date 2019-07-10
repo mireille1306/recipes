@@ -10,7 +10,7 @@
   export default {
     props: {
       title: String,
-      filterAction: String
+      filterAction: Boolean
     },
     methods: {
       setFilters () {
