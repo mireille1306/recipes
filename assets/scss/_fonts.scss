@@ -1,0 +1,37 @@
+$font-size-xxs: 11px;
+$font-size-xs: 13px;
+$font-size-s: 14px;
+$font-size-m: 15px;
+$font-size-l: 22px;
+
+@mixin bodyText {
+  font-size: $font-size-m;
+  line-height: 22px;
+  color: $tint-13;
+}
+
+@mixin cardTitle {
+  font-size: $font-size-m;
+  line-height: 19px;
+}
+
+@mixin description {
+  font-size: $font-size-s;
+  line-height: 22px;
+}
+
+@mixin note {
+  font-size: $font-size-xxs;
+  line-height: 14px;
+  color: $tint-10;
+}
+
+@mixin smallTitle {
+  font-size: $font-size-xs;
+  line-height: 17px;
+}
+
+@mixin mainTitle {
+  font-size: $font-size-l;
+  line-height: 28px;
+}
