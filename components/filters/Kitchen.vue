@@ -9,12 +9,8 @@
       <use xlink:href="~/assets/images/icons/icons.svg#icon-chevron-right"></use>
     </svg>
     <ul>
-      <li class="checkbox"><input type="checkbox" :checked="kitchen.includes('chinese')"
-          @change="selectCheckbox('chinese')"><span>Chinees</span></li>
-      <li class="checkbox"><input type="checkbox" :checked="kitchen.includes('dutch')"
-          @change="selectCheckbox('dutch')"><span>Nederlands</span></li>
-      <li class="checkbox"><input type="checkbox" :checked="kitchen.includes('american')"
-          @change="selectCheckbox('american')"><span>Amerikaans</span></li>
+      <li class="checkbox" v-for="option in facets" :key="option.name"><input type="checkbox" :checked="kitchen.includes(option.name)"
+          @change="selectCheckbox(option._id)"><span>{{option.title}}</span></li>
     </ul>
   </li>
 </template>
@@ -31,12 +27,20 @@
       kitchen() {
         return this.$store.state.filters.kitchen
       },
+
+      facets () {
+        return this.$store.state.facets.kitchen;
+      }
     },
 
     methods: {
       selectCheckbox (value) {
         this.$store.commit('setKitchen', value);
       }
+    },
+
+    created() {
+      this.$store.commit('setFilterKitchen');
     }
   }
 

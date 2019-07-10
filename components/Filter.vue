@@ -45,7 +45,7 @@
 
     computed: {
       totalFilters () {
-        return (this.$store.state.filters.prepTime > 0 ? 1 : 0) + (parseFloat(this.$store.state.filters.level > 1 ? 1 : 0)) + this.$store.state.filters.kitchen.length + this.$store.state.filters.ingredients.length;
+        return (this.$store.state.filters.prepTime.length > 1 ? 1 : 0) + (parseFloat(this.$store.state.filters.level > 1 ? 1 : 0)) + this.$store.state.filters.kitchen.length + this.$store.state.filters.ingredients.length;
       },
 
       allFilters () {

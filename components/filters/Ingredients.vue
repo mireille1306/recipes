@@ -1,5 +1,5 @@
 <template>
-  <li :class="{'active': collapsed}">
+  <li :class="{'active': collapsed}" class="greyed-out">
     <svg class="filter-icon icon-ingredients">
       <use xlink:href="~/assets/images/icons/icons.svg#icon-ingredients"></use>
     </svg>

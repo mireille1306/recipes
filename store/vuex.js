@@ -7,14 +7,23 @@ export default new Vuex.Store({
 
   state: { // data
     listView: localStorage.getItem('listView') === 'true',
-    recipesApi: 'https://www.themealdb.com/api/json/v1/1/filter.php?a=Chinese',
+    recipesApi: 'http://recepten.tijdemanbouwexpertise.nl/cockpit/api/collections/get/recipe',
+    prepTimeApi: 'http://recepten.tijdemanbouwexpertise.nl/cockpit/api/collections/get/preptime',
+    difficultyApi: 'http://recepten.tijdemanbouwexpertise.nl/cockpit/api/collections/get/level',
+    kitchenApi: 'http://recepten.tijdemanbouwexpertise.nl/cockpit/api/collections/get/kitchen',
     recipes: [],
+    originalRecipes: [],
     searchActive:false,
     searchQuery: '',
     filtersActive: false,
+    facets: {
+      prepTime: [],
+      difficulty: [],
+      kitchen: []
+    },
     filters: {
       prepTime: 0,
-      level: 1,
+      difficulty: 1,
       kitchen: [],
       ingredients: []
     }
@@ -23,7 +32,25 @@ export default new Vuex.Store({
   actions: { //methods
     getRecipes () {
       return axios.get(this.state.recipesApi).then(response => {
-        return response.data.meals;
+        return response.data.entries;
+      })
+    },
+
+    getPrepTimeFilters () {
+      return axios.get(this.state.prepTimeApi).then(response => {
+        return response.data.entries;
+      })
+    },
+
+    getDifficultyFilters () {
+      return axios.get(this.state.difficultyApi).then(response => {
+        return response.data.entries;
+      })
+    },
+
+    getKitchenFilters () {
+      return axios.get(this.state.kitchenApi).then(response => {
+        return response.data.entries;
       })
     }
   },
@@ -37,6 +64,25 @@ export default new Vuex.Store({
     setRecipes(state) {
       this.dispatch('getRecipes').then(data => {
         state.recipes = data;
+        state.originalRecipes = data;
+      })
+    },
+
+    setFilterPrepTime(state) {
+      this.dispatch('getPrepTimeFilters').then(data => {
+        state.facets.prepTime = data;
+      })
+    },
+
+    setFilterDifficulty(state) {
+      this.dispatch('getDifficultyFilters').then(data => {
+        state.facets.difficulty = data;
+      })
+    },
+
+    setFilterKitchen(state) {
+      this.dispatch('getKitchenFilters').then(data => {
+        state.facets.kitchen = data;
       })
     },
 
@@ -53,7 +99,7 @@ export default new Vuex.Store({
     },
 
     setDifficulty (state, value) {
-      state.filters.level = value;
+      state.filters.difficulty = value;
     },
 
     setKitchen (state, value) {
@@ -69,14 +115,16 @@ export default new Vuex.Store({
     resetFilters (state) {
       state.filters = {
         prepTime: 0,
-        level: 1,
+        difficulty: 1,
         kitchen: [],
         ingredients: []
       };
+      this.state.recipes = state.originalRecipes;
     },
 
     setFilters (state) {
       state.filtersActive = false;
+      state.recipes = JSON.parse(JSON.stringify(state.originalRecipes)).filter(r => r.preptime._id === state.filters.prepTime)
     },
 
     toggleFilters (state, value) {

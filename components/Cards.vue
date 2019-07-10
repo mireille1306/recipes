@@ -1,12 +1,8 @@
 <template>
   <div>
     <ul class="active-filters" v-if="filterTotal > 0">
-      <li v-if="filters.prepTime === 1">15 min</li>
-      <li v-if="filters.prepTime === 2">30 min</li>
-      <li v-if="filters.prepTime === 3">60+ min</li>
-      <li v-if="filters.level === '2'">Makkelijk</li>
-      <li v-if="filters.level === '3'">Gemiddeld</li>
-      <li v-if="filters.level === '4'">Moeilijk</li>
+      <li v-for="time in facets.prepTime" v-show="filters.prepTime === time._id" :key="time.name">{{time.title}}</li>
+      <li v-for="level in facets.difficulty" v-show="filters.difficulty === level.name" :key="level.name">{{level.title}}</li>
       <li v-for="filter in filters.kitchen" :key="filter">{{filter}}</li>
       <li v-for="filter in filters.ingredients" :key="filter">{{filter}}</li>
       <li @click="resetFilters()">
@@ -21,10 +17,10 @@
     <div :class="{'grid-2-xs': !listView, 'grid-1-xs': listView}">
       <div class="card" v-for="recipe in recipes" :key="recipe.title">
         <figure>
-          <img :src="recipe.strMealThumb" alt="">
+          <img :src="recipe.image.path" alt="">
         </figure>
         <div class="text">
-          <h2 class="title">{{recipe.strMeal}}</h2>
+          <h2 class="title">{{recipe.title}}</h2>
           <div class="likes">
             <span>100</span>
             <svg class="icon-hart">
@@ -50,7 +46,7 @@
         return this.$store.state.listView
       },
       recipes() {
-        return this.$store.state.recipes.filter(r => r.strMeal.toLowerCase().includes(this.query.toLowerCase()));
+        return this.filterRecipes();
       },
       query() {
         return this.$store.state.searchQuery;
@@ -59,13 +55,22 @@
         return this.$store.state.filters;
       },
       filterTotal () {
-        return (this.$store.state.filters.prepTime > 0 ? 1 : 0) + (parseFloat(this.$store.state.filters.level > 1 ? 1 : 0)) + this.$store.state.filters.kitchen.length + this.$store.state.filters.ingredients.length;
+        return (this.$store.state.filters.prepTime.length > 1 ? 1 : 0) + (parseFloat(this.$store.state.filters.level > 1 ? 1 : 0)) + this.$store.state.filters.kitchen.length + this.$store.state.filters.ingredients.length;
+      },
+
+      facets () {
+        return this.$store.state.facets;
       }
     },
     methods: {
       resetFilters () {
         this.$store.commit('resetFilters');
       },
+
+      filterRecipes () {
+        return this.$store.state.recipes
+        .filter(r => r.title.toLowerCase().includes(this.query.toLowerCase()))
+      }
     },
     created() {
       this.$store.commit('setRecipes');

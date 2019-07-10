@@ -1,22 +1,10 @@
 <template>
   <div class="block-filter">
-    <div class="square" @click="setPreparationTime(1)" :class="{'active': prepTime === 1}">
+    <div class="square" @click="setPreparationTime(time._id)" :class="{'active': prepTime === time._id}" v-for="time in facets" :key="time.name">
       <svg class="icon-cooking-time">
         <use xlink:href="~/assets/images/icons/icons.svg#icon-cooking-time"></use>
       </svg>
-      <span>15 min</span>
-    </div>
-    <div class="square" @click="setPreparationTime(2)" :class="{'active': prepTime === 2}">
-      <svg class="icon-cooking-time">
-        <use xlink:href="~/assets/images/icons/icons.svg#icon-cooking-time"></use>
-      </svg>
-      <span>30 min</span>
-    </div>
-    <div class="square" @click="setPreparationTime(3)" :class="{'active': prepTime === 3}">
-      <svg class="icon-cooking-time">
-        <use xlink:href="~/assets/images/icons/icons.svg#icon-cooking-time"></use>
-      </svg>
-      <span>60+ min</span>
+      <span>{{time.title}}</span>
     </div>
   </div>
 </template>
@@ -27,12 +15,20 @@
       prepTime() {
         return this.$store.state.filters.prepTime
       },
+
+      facets () {
+        return this.$store.state.facets.prepTime;
+      }
     },
 
     methods: {
       setPreparationTime (value) {
         this.$store.commit('setPrepTime', value);
       }
+    },
+
+    created() {
+      this.$store.commit('setFilterPrepTime');
     }
   }
 
