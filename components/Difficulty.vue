@@ -1,6 +1,6 @@
 <template>
   <div class="slider-filter">
-    <input type="range" min="1" max="4" step="1" class="track" v-model="level">
+    <input type="range" min="1" max="4" class="track" v-model="level">
     <div class="description">{{level}}
       <span :class="{'active': level === '1'}">All</span>
       <span :class="{'active': level === '2'}">Makkelijk</span>
