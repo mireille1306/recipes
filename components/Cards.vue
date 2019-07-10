@@ -4,10 +4,10 @@
     <div :class="{'grid-2-xs': !listView, 'grid-1-xs': listView}">
       <div class="card" v-for="recipe in recipes" :key="recipe.title">
         <figure>
-          <img :src="recipe.image.path" alt="">
+          <img :src="recipe.strMealThumb" alt="">
         </figure>
         <div class="text">
-          <h2 class="title">{{recipe.title}}</h2>
+          <h2 class="title">{{recipe.strMeal}}</h2>
           <div class="likes">
             <span>100</span>
             <svg class="icon-hart">
@@ -33,7 +33,7 @@
         return this.$store.state.listView
       },
       recipes() {
-        return this.$store.state.recipes.filter(r => r.title.toLowerCase().includes(this.query.toLowerCase()));
+        return this.$store.state.recipes.filter(r => r.strMeal.toLowerCase().includes(this.query.toLowerCase()));
       },
       query() {
         return this.$store.state.searchQuery;

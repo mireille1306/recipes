@@ -7,7 +7,7 @@ export default new Vuex.Store({
 
   state: { // data
     listView: localStorage.getItem('listView') === 'true',
-    recipesApi: 'http://recepten.tijdemanbouwexpertise.nl/cockpit/api/collections/get/recipe',
+    recipesApi: 'https://www.themealdb.com/api/json/v1/1/filter.php?a=Chinese',
     recipes: [],
     searchActive:false,
     searchQuery: ''
@@ -20,7 +20,7 @@ export default new Vuex.Store({
   actions: { //methods
     getRecipes () {
       return axios.get(this.state.recipesApi).then(response => {
-        return response.data.entries;
+        return response.data.meals;
       })
     }
   },
@@ -42,7 +42,6 @@ export default new Vuex.Store({
     },
 
     setSearchQuery (state, query) {
-      console.log(query)
       state.searchQuery = query;
     }
   }
