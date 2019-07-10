@@ -1,12 +1,12 @@
 <template>
   <div class="filter-wrapper">
-    <div class="filter-toggle" @click="active = !active">
+    <div class="filter-toggle" @click="toggleFilters(true)">
       <span>Filters</span>
       <span class="amount" v-if="totalFilters">{{totalFilters}}</span>
     </div>
     <div class="filter" :class="{'active':active}">
+      <mainHeader :filter-action="true" title="Filters" />
       <div class="container">
-        {{allFilters}}
         <h3>Bereidingstijd</h3>
         <preperationTime />
         <hr>
@@ -32,18 +32,15 @@
   import difficulty from '~/components/filters/difficulty.vue';
   import kitchen from '~/components/filters/kitchen.vue';
   import ingredients from '~/components/filters/ingredients.vue';
+  import mainHeader from '~/components/Header.vue';
 
   export default {
     components: {
       preperationTime,
       difficulty,
       kitchen,
-      ingredients
-    },
-    data() {
-      return {
-        active: false,
-      };
+      ingredients,
+      mainHeader
     },
 
     computed: {
@@ -53,22 +50,24 @@
 
       allFilters () {
         return this.$store.state.filters;
+      },
+
+      active () {
+        return this.$store.state.filtersActive;
       }
     },
 
     methods: {
       resetFilters () {
         this.$store.commit('resetFilters');
-        this.active = false;
+      },
+
+      toggleFilters (status) {
+        this.$store.commit('toggleFilters', status);
       },
 
       setFilters () {
-        this.active = false;
-      },
-
-      selectCheckbox (filterType, filterValue) {
-        let index = this.filters[filterType].indexOf(filterValue);
-        this.filters[filterType].includes(filterValue) ? this.filters[filterType].splice(index,1) : this.filters[filterType].push(filterValue);
+        this.$store.commit('setFilters');
       }
     },
 
@@ -118,25 +117,20 @@
 
   .filter {
     opacity: 0;
-    height: calc(100% - 48px);
+    height: 100%;
     width: 100%;
     background: #fff;
     position: fixed;
-    top: 48px;
+    top: 0;
     left: 0;
     transform: translateY(100%);
     transition: ease all 0.3s;
     overflow-x: auto;
+    z-index: 200;
 
     &.active {
       opacity: 1;
       transform: translateY(0);
-    }
-
-    hr {
-      margin: 32px 0;
-      display: block;
-      border-top: 1px solid #E0DCDC;
     }
   }
 

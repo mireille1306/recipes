@@ -11,16 +11,13 @@ export default new Vuex.Store({
     recipes: [],
     searchActive:false,
     searchQuery: '',
+    filtersActive: false,
     filters: {
       prepTime: 0,
       level: 1,
       kitchen: [],
       ingredients: []
     }
-  },
-
-  getters: {
-
   },
   
   actions: { //methods
@@ -76,6 +73,14 @@ export default new Vuex.Store({
         kitchen: [],
         ingredients: []
       };
+    },
+
+    setFilters (state) {
+      state.filtersActive = false;
+    },
+
+    toggleFilters (state, value) {
+      state.filtersActive = value;
     }
   }
 })
