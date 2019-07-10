@@ -10,13 +10,19 @@ export default new Vuex.Store({
     recipesApi: 'https://www.themealdb.com/api/json/v1/1/filter.php?a=Chinese',
     recipes: [],
     searchActive:false,
-    searchQuery: ''
+    searchQuery: '',
+    filters: {
+      prepTime: 0,
+      level: 1,
+      kitchen: [],
+      ingredients: []
+    }
+  },
+
+  getters: {
+
   },
   
-  getters: { // computed
-
-  },
-
   actions: { //methods
     getRecipes () {
       return axios.get(this.state.recipesApi).then(response => {
@@ -43,6 +49,36 @@ export default new Vuex.Store({
 
     setSearchQuery (state, query) {
       state.searchQuery = query;
+    },
+
+    setPrepTime (state, value) {
+      state.filters.prepTime = value;
+    },
+
+    setDifficulty (state, value) {
+      state.filters.level = value;
+    },
+
+    setKitchen (state, value) {
+      let index = state.filters.kitchen.indexOf(value);
+      state.filters.kitchen.includes(value) ? state.filters.kitchen.splice(index,1) : state.filters.kitchen.push(value);
+    },
+
+    setIngredients (state, value) {
+      let index = state.filters.ingredients.indexOf(value);
+      state.filters.ingredients.includes(value) ? state.filters.ingredients.splice(index,1) : state.filters.ingredients.push(value);
+    },
+
+    resetFilters (state) {
+      state.filters = {
+        prepTime: 0,
+        level: 1,
+        kitchen: [],
+        ingredients: []
+      };
     }
   }
 })
+
+export const strict = false;
+

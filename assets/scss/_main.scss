@@ -75,6 +75,10 @@ strong {
   text-align: center;
   border: 0;
   text-transform: uppercase;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 .btn-tint {
@@ -87,4 +91,8 @@ strong {
   text-align: center;
   border: 0;
   text-transform: uppercase;
+
+  &:focus {
+    outline: none;
+  }
 }

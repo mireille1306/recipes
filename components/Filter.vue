@@ -2,63 +2,25 @@
   <div class="filter-wrapper">
     <div class="filter-toggle" @click="active = !active">
       <span>Filters</span>
-      <span class="amount">13</span>
+      <span class="amount" v-if="totalFilters">{{totalFilters}}</span>
     </div>
     <div class="filter" :class="{'active':active}">
       <div class="container">
+        {{allFilters}}
         <h3>Bereidingstijd</h3>
-        <div class="block-filter">
-          <div class="square active">
-            <svg class="icon-cooking-time">
-              <use xlink:href="~/assets/images/icons/icons.svg#icon-cooking-time"></use>
-            </svg>
-            <span>15 min</span>
-          </div>
-          <div class="square">
-            <svg class="icon-cooking-time">
-              <use xlink:href="~/assets/images/icons/icons.svg#icon-cooking-time"></use>
-            </svg>
-            <span>30 min</span>
-          </div>
-          <div class="square">
-            <svg class="icon-cooking-time">
-              <use xlink:href="~/assets/images/icons/icons.svg#icon-cooking-time"></use>
-            </svg>
-            <span>60+ min</span>
-          </div>
-        </div>
+        <preperationTime />
         <hr>
         <h3>Difficulty</h3>
-        slider
+        <difficulty />
         <hr>
         <h3>More</h3>
         <ul class="list-filter">
-          <li :class="{'active': collapsed.cuisine}" @click="collapsed.cuisine = !collapsed.cuisine">
-            <svg class="filter-icon icon-cuisine"><use xlink:href="~/assets/images/icons/icons.svg#icon-cuisine"></use></svg>
-            <span class="title">Keuken</span>
-            <span class="amount">1</span>
-            <svg class="icon-chevron-right"><use xlink:href="~/assets/images/icons/icons.svg#icon-chevron-right"></use></svg>
-            <ul>
-              <li><input type="checkbox"><span>optie</span></li>
-              <li><input type="checkbox"><span>optie</span></li>
-              <li><input type="checkbox"><span>optie</span></li>
-            </ul>
-          </li>
-          <li :class="{'active': collapsed.ingredients}" @click="collapsed.ingredients = !collapsed.ingredients">
-            <svg class="filter-icon icon-ingredients"><use xlink:href="~/assets/images/icons/icons.svg#icon-ingredients"></use></svg>
-            <span class="title">Ingredienten</span>
-            <span class="amount">12</span>
-            <svg class="icon-chevron-right"><use xlink:href="~/assets/images/icons/icons.svg#icon-chevron-right"></use></svg>
-            <ul>
-              <li><input type="checkbox"><span>optie</span></li>
-              <li><input type="checkbox"><span>optie</span></li>
-              <li><input type="checkbox"><span>optie</span></li>
-            </ul>
-          </li>
+          <kitchen />
+          <ingredients />
         </ul>
         <div class="btn-group">
-          <button class="btn-tint">Reset</button>
-          <button class="btn">Apply filters</button>
+          <button class="btn-tint" @click="resetFilters()">Reset</button>
+          <button class="btn" @click="setFilters()">Apply filters</button>
         </div>
       </div>
     </div>
@@ -66,14 +28,54 @@
 </template>
 
 <script>
+  import preperationTime from '~/components/filters/PreperationTime.vue';
+  import difficulty from '~/components/filters/difficulty.vue';
+  import kitchen from '~/components/filters/kitchen.vue';
+  import ingredients from '~/components/filters/ingredients.vue';
+
   export default {
+    components: {
+      preperationTime,
+      difficulty,
+      kitchen,
+      ingredients
+    },
     data() {
       return {
         active: false,
-        collapsed: {
-          ingredients: false,
-          cuisine: false
-        }
+      };
+    },
+
+    computed: {
+      totalFilters () {
+        return (this.$store.state.filters.prepTime > 0 ? 1 : 0) + (parseFloat(this.$store.state.filters.level > 1 ? 1 : 0)) + this.$store.state.filters.kitchen.length + this.$store.state.filters.ingredients.length;
+      },
+
+      allFilters () {
+        return this.$store.state.filters;
+      }
+    },
+
+    methods: {
+      resetFilters () {
+        this.$store.commit('resetFilters');
+        this.active = false;
+      },
+
+      setFilters () {
+        this.active = false;
+      },
+
+      selectCheckbox (filterType, filterValue) {
+        let index = this.filters[filterType].indexOf(filterValue);
+        this.filters[filterType].includes(filterValue) ? this.filters[filterType].splice(index,1) : this.filters[filterType].push(filterValue);
+      }
+    },
+
+    watch: {
+      // Convert level to number
+      'filters.level' (val) {
+        this.filters.level = parseFloat(val);
       }
     }
   }
@@ -135,136 +137,6 @@
       margin: 32px 0;
       display: block;
       border-top: 1px solid #E0DCDC;
-    }
-  }
-
-
-
-  .block-filter {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 16px;
-    margin: 0 0 16px;
-
-    svg {
-      width: 40px;
-      height: 40px;
-      fill: #ED6B9C;
-      margin: 0 0 15px;
-    }
-
-    .square {
-      position: relative;
-      padding: 25px;
-      color: #615F5F;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background: #FFFFFF;
-      box-shadow: 0 4px 8px 0 rgba(138, 107, 118, 0.08);
-      border-radius: 4px;
-      font-size: 15px;
-      text-align: center;
-
-      &.active {
-        background: #ED6B9C;
-        color: #fff;
-
-        svg {
-          fill: #fff;
-        }
-      }
-    }
-  }
-
-  .list-filter {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-
-    .filter-icon {
-      width: 24px;
-      height: 24px;
-      fill: #E0DCDC;
-      margin: 0 8px 0 0;
-    }
-
-    li {
-      list-style: none;
-      padding: 16px 0;
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      width: 100%;
-      border-top: 1px solid #E0DCDC;
-
-
-      &:first-child {
-        border-top: 0;
-      }
-
-      .title {
-        flex: 0 0 calc(100% - 76px);
-      }
-
-      .amount {
-        background: #ED6B9C;
-        color: #fff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 20px;
-        width: 20px;
-        border-radius: 50%;
-        margin: 0 8px 0 0;
-      }
-
-      &.active {
-
-        ul {
-          height: auto;
-          margin: 16px 0 0 0;
-          z-index: 0;
-          opacity: 1;
-          transition: ease height 0s , ease opacity 0.2s;
-
-          li {
-            padding: 16px 0;
-            transition: ease all 0.3s;
-          }
-        }
-      }
-
-      ul {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        flex: 0 0 100%;
-        height: 0; 
-        z-index: -100;
-        opacity: 0;
-        position: relative;
-        transition: none;
-        
-
-        li {
-          padding: 0;
-          transition: ease all 0.3s;
-
-          &:first-child {
-            border-top: 1px solid #E0DCDC;
-          }
-        }
-      }
-    }
-
-    .icon-chevron-right {
-      fill: #ED6B9C;
-      height: 16px;
-      width: 16px;
     }
   }
 
