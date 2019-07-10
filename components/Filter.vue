@@ -29,9 +29,9 @@
 
 <script>
   import preperationTime from '~/components/filters/PreperationTime.vue';
-  import difficulty from '~/components/filters/difficulty.vue';
-  import kitchen from '~/components/filters/kitchen.vue';
-  import ingredients from '~/components/filters/ingredients.vue';
+  import difficulty from '~/components/filters/Difficulty.vue';
+  import kitchen from '~/components/filters/Kitchen.vue';
+  import ingredients from '~/components/filters/Ingredients.vue';
   import mainHeader from '~/components/Header.vue';
 
   export default {
