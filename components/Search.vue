@@ -61,6 +61,7 @@
       width: 100%;
       padding: 8px 16px;
       border-radius: 20px;
+      font-size: 16px;
 
       &::placeholder {
         color: #E0DCDC;

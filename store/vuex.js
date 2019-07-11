@@ -7,10 +7,10 @@ export default new Vuex.Store({
 
   state: { // data
     listView: localStorage.getItem('listView') === 'true',
-    recipesApi: 'http://recepten.tijdemanbouwexpertise.nl/cockpit/api/collections/get/recipe',
-    prepTimeApi: 'http://recepten.tijdemanbouwexpertise.nl/cockpit/api/collections/get/preptime',
-    difficultyApi: 'http://recepten.tijdemanbouwexpertise.nl/cockpit/api/collections/get/level',
-    kitchenApi: 'http://recepten.tijdemanbouwexpertise.nl/cockpit/api/collections/get/kitchen',
+    recipesApi: '/stubs/recipes.json',
+    prepTimeApi: '/stubs/preptime.json',
+    difficultyApi: '/stubs/level.json',
+    kitchenApi: '/stubs/kitchen.json',
     recipes: [],
     originalRecipes: [],
     searchActive:false,

@@ -1,0 +1,228 @@
+{
+  "fields": {
+    "title": {
+      "name": "title",
+      "type": "text",
+      "localize": false,
+      "options": []
+    },
+    "name": {
+      "name": "name",
+      "type": "text",
+      "localize": false,
+      "options": []
+    },
+    "description": {
+      "name": "description",
+      "type": "wysiwyg",
+      "localize": false,
+      "options": []
+    },
+    "ingredients": {
+      "name": "ingredients",
+      "type": "wysiwyg",
+      "localize": false,
+      "options": []
+    },
+    "image": {
+      "name": "image",
+      "type": "image",
+      "localize": false,
+      "options": []
+    },
+    "gallery": {
+      "name": "gallery",
+      "type": "gallery",
+      "localize": false,
+      "options": []
+    },
+    "preptime": {
+      "name": "preptime",
+      "type": "collectionlink",
+      "localize": false,
+      "options": {
+        "link": "preptime",
+        "display": "title",
+        "multiple": false,
+        "limit": false
+      }
+    },
+    "meal": {
+      "name": "meal",
+      "type": "collectionlink",
+      "localize": false,
+      "options": {
+        "link": "meal",
+        "display": "title",
+        "multiple": true,
+        "limit": false
+      }
+    },
+    "allergenes": {
+      "name": "allergenes",
+      "type": "collectionlink",
+      "localize": false,
+      "options": {
+        "link": "allergenes",
+        "display": "title",
+        "multiple": true,
+        "limit": false
+      }
+    },
+    "kitchen": {
+      "name": "kitchen",
+      "type": "collectionlink",
+      "localize": false,
+      "options": {
+        "link": "kitchen",
+        "display": "title",
+        "multiple": true,
+        "limit": false
+      }
+    },
+    "level": {
+      "name": "level",
+      "type": "collectionlink",
+      "localize": false,
+      "options": {
+        "link": "level",
+        "display": "title",
+        "multiple": false,
+        "limit": false
+      }
+    }
+  },
+  "entries": [{
+    "title": "Garden Risotto",
+    "name": "garden-risotto",
+    "description": "<ol>\n<li class=\"recipe-directions__item\">Stoom de asperges in 10 minuten gaar.<\/li>\n<li>Maak in de tussentijd de bouillon en snipper een ui<\/li>\n<li>Fruit de ui in een grote pan.<\/li>\n<li>Doe de risotto bij de ui in, bak het 3 minuten mee en voeg daarna de doperwten, wijn, peper en zout toe.<\/li>\n<li>Voeg de bouillon beetje bij beetje toe tot het water is geabsorbeerd en de rijst zacht is.<\/li>\n<li>Bak de spinazie in een aparte pan en voeg dit toe aan het mengsel.<\/li>\n<\/ol>\n<p>&nbsp;<\/p>",
+    "ingredients": "<ul>\n<li>200 gram asperges (in stukjes van 2 cm)<\/li>\n<li>1 ui<\/li>\n<li>1 liter groentebouillon<\/li>\n<li>olijfolie<\/li>\n<li>risotto<\/li>\n<li>zout en peper<\/li>\n<li>200 gram spinazie<\/li>\n<li>100 gram erwten<\/li>\n<li>100 ml witte wijn<\/li>\n<\/ul>",
+    "image": {
+      "path": "http:\/\/i64.tinypic.com\/2d9shmr.jpg"
+    },
+    "gallery": "",
+    "preptime": {
+      "_id": "5cfb8845633731ae300002d8",
+      "link": "preptime",
+      "display": "15 min"
+    },
+    "meal": [{
+      "_id": "5cfb89af633731ab740003a6",
+      "link": "meal",
+      "display": "Dinner"
+    }],
+    "allergenes": "",
+    "kitchen": [{
+      "_id": "5cfcda9b633731b66e0001a7",
+      "link": "kitchen",
+      "display": "Italian"
+    }, {
+      "_id": "5cfce6b2633731b6ad00031a",
+      "link": "kitchen",
+      "display": "Vegan"
+    }, {
+      "_id": "5cfce6bd633731bc680001dd",
+      "link": "kitchen",
+      "display": "Vegetarian"
+    }],
+    "_mby": "5cfb78c4633731b0670001ff",
+    "_by": "5cfe1ffd643466fcb60001b0",
+    "_o": 2,
+    "_modified": 1562793349,
+    "_created": 1560788834,
+    "_id": "5d07bf6264346683c300034c",
+    "level": {
+      "_id": "5d2648f3643466849f000381",
+      "link": "level",
+      "display": "Gemiddeld"
+    },
+    "children": []
+  }, {
+    "title": "Geroosterde aardappeltjes uit de oven",
+    "name": "geroosterde-aardappeltjes-uit-de-oven",
+    "description": "<ol>\n<li>Schil de aardappelen en snij ze een kleine partjes.<\/li>\n<li>Kook de aardappelen in water samen met een theelepel zout en een theelepeltje bakingsoda.<\/li>\n<li>Doe ondertussen olijfolie samen met rozemarijn en knoflook in een koekenpan en laat de knoflook bruin worden.<\/li>\n<li>Giet het olie-knoflook mengsel in een kom.<\/li>\n<li>Als de aardappelen zacht zijn kunnen ze worden afgegoten. Laat ze nog even 2 minuten met de deksel van de pan uitdrogen.<\/li>\n<li>Doe de aardappelen bij het olie mengsel en voeg eventueel peper en zout toe. Schud de aardappelen goed door zodat er kruimels rondom de aardappelen komen.<\/li>\n<li>Leg de partjes uitgespreid op een bakplaat (met papier) en bak ze 40 minuten op 185 graden celcius. Af en toe omdraaien.<\/li>\n<\/ol>",
+    "ingredients": "<ul>\n<li>400 gram aardappelen<\/li>\n<li>5 eetlepels olie<\/li>\n<li>3 grote teentjes knoflook<\/li>\n<li>eetlepel rozemarijn<\/li>\n<li>1 theelepel baking soda<\/li>\n<li>peper en zout<\/li>\n<\/ul>",
+    "image": {
+      "path": "http:\/\/i68.tinypic.com\/27xdwfb.jpg"
+    },
+    "gallery": "",
+    "preptime": "",
+    "meal": [{
+      "_id": "5cfb89af633731ab740003a6",
+      "link": "meal",
+      "display": "Dinner"
+    }],
+    "allergenes": "",
+    "kitchen": [{
+      "_id": "5cfcda68633731b291000227",
+      "link": "kitchen",
+      "display": "Barbecue"
+    }, {
+      "_id": "5cfcda4d633731cbc6000045",
+      "link": "kitchen",
+      "display": "Dutch"
+    }, {
+      "_id": "5cfce6bd633731bc680001dd",
+      "link": "kitchen",
+      "display": "Vegetarian"
+    }, {
+      "_id": "5cfce6b2633731b6ad00031a",
+      "link": "kitchen",
+      "display": "Vegan"
+    }],
+    "_mby": "5cfb78c4633731b0670001ff",
+    "_by": "5cfb78c4633731b0670001ff",
+    "_o": 7,
+    "_modified": 1562793363,
+    "_created": 1560706061,
+    "_id": "5d067c0d6434669114000115",
+    "level": {
+      "_id": "5d2648e8643466845400039f",
+      "link": "level",
+      "display": "Makkelijk"
+    },
+    "children": []
+  }, {
+    "title": "Champignonsoep met kokosroom",
+    "name": "champignonsoep-met-kokosroom",
+    "description": "<ol>\n<li>Voeg in een grote, diepe pan op middelhoog vuur de olijfolie toe aan de pan<\/li>\n<li>Voeg de champignons, knoflook, ui, zout en peper toe. Roer door elkaar en bak tot champignons bruin, ongeveer 8 minuten.<\/li>\n<li>Giet de groentebouillon en de kokosmelk erbij. Voeg de tijm toe. Roer samen en breng aan de kook, laat dan 15 minuten sudderen.<\/li>\n<li>Schep twee kopjes soep (met wat champignons) eruit en giet het in een kom. Gebruik de staafmixer om het te mengen<\/li>\n<li>Giet terug in de soeppan en meng nog een keer.<\/li>\n<li>Serveer de soep en bedek met je favoriete toppings en geniet ervan!<\/li>\n<\/ol>",
+    "ingredients": "<ul>\n<li>1\/2 eetlepel olijfolie<\/li>\n<li>1 groot pak champignons<\/li>\n<li>5 teentjes knoflook, fijngehakt<\/li>\n<li>1\/2 grote ui (ongeveer 3\/4 kop), gesnipperd<\/li>\n<li>1 theelepel zeezout &amp; 1\/2 theelepel gemalen zwarte peper<\/li>\n<li>3 kopjes groentebouillon<\/li>\n<li>1 pakje kokosroom<\/li>\n<li>4 takjes tijm, stengels verwijderd<\/li>\n<\/ul>",
+    "image": {
+      "path": "http:\/\/i66.tinypic.com\/24w985s.jpg"
+    },
+    "gallery": "",
+    "preptime": {
+      "_id": "5cfb8861633731b562000112",
+      "link": "preptime",
+      "display": "30 min"
+    },
+    "meal": [{
+      "_id": "5cfb89af633731ab740003a6",
+      "link": "meal",
+      "display": "Dinner"
+    }, {
+      "_id": "5cfb899c633731b5da0001d9",
+      "link": "meal",
+      "display": "Lunch"
+    }],
+    "allergenes": "",
+    "kitchen": [{
+      "_id": "5cfce6b2633731b6ad00031a",
+      "link": "kitchen",
+      "display": "Vegan"
+    }],
+    "_mby": "5cfb78c4633731b0670001ff",
+    "_by": "5cfb78c4633731b0670001ff",
+    "_o": 8,
+    "_modified": 1562793376,
+    "_created": 1560784678,
+    "_id": "5d07af26643466214c00020b",
+    "level": {
+      "_id": "5d2648f3643466849f000381",
+      "link": "level",
+      "display": "Gemiddeld"
+    },
+    "children": []
+  }],
+  "total": 3
+}

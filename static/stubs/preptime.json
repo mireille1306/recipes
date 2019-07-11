@@ -1,0 +1,48 @@
+{
+  "fields": {
+    "name": {
+      "name": "name",
+      "type": "text",
+      "localize": false,
+      "options": []
+    },
+    "title": {
+      "name": "title",
+      "type": "text",
+      "localize": false,
+      "options": []
+    }
+  },
+  "entries": [{
+    "name": "1",
+    "title": "15 min",
+    "_mby": "5cfb78c4633731b0670001ff",
+    "_by": "5cfb7449633731acc7000254",
+    "_o": 0,
+    "_modified": 1562789518,
+    "_created": 1559988293,
+    "_id": "5cfb8845633731ae300002d8",
+    "children": []
+  }, {
+    "name": "2",
+    "title": "30 min",
+    "_mby": "5cfb78c4633731b0670001ff",
+    "_by": "5cfb7449633731acc7000254",
+    "_o": 1,
+    "_modified": 1562789527,
+    "_created": 1559988321,
+    "_id": "5cfb8861633731b562000112",
+    "children": []
+  }, {
+    "name": "3",
+    "title": "60+ min",
+    "_mby": "5cfb78c4633731b0670001ff",
+    "_by": "5cfb7449633731acc7000254",
+    "_o": 2,
+    "_modified": 1562789535,
+    "_created": 1559988333,
+    "_id": "5cfb886d633731b5da000193",
+    "children": []
+  }],
+  "total": 3
+}

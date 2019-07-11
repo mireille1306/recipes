@@ -1,0 +1,42 @@
+{
+  "fields": {
+    "name": {
+      "name": "name",
+      "type": "text",
+      "localize": false,
+      "options": []
+    },
+    "title": {
+      "name": "title",
+      "type": "text",
+      "localize": false,
+      "options": []
+    }
+  },
+  "entries": [{
+    "name": "2",
+    "title": "Makkelijk",
+    "_mby": "5cfb78c4633731b0670001ff",
+    "_by": "5cfb78c4633731b0670001ff",
+    "_modified": 1562790120,
+    "_created": 1562790120,
+    "_id": "5d2648e8643466845400039f"
+  }, {
+    "name": "3",
+    "title": "Gemiddeld",
+    "_mby": "5cfb78c4633731b0670001ff",
+    "_by": "5cfb78c4633731b0670001ff",
+    "_modified": 1562790131,
+    "_created": 1562790131,
+    "_id": "5d2648f3643466849f000381"
+  }, {
+    "name": "4",
+    "title": "Uitdaging",
+    "_mby": "5cfb78c4633731b0670001ff",
+    "_by": "5cfb78c4633731b0670001ff",
+    "_modified": 1562790147,
+    "_created": 1562790147,
+    "_id": "5d2649036434668513000280"
+  }],
+  "total": 3
+}
